@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { User, Session } from '@supabase/supabase-js';
 
@@ -19,9 +19,15 @@ export function useAuth() {
     isAuthenticated: false,
   });
 
-  const supabase = createClient();
+  // Only create client on the client side
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
 
   const refreshAuth = useCallback(async () => {
+    if (!supabase) return;
+
     try {
       const {
         data: { session },
@@ -41,9 +47,14 @@ export function useAuth() {
         isAuthenticated: false,
       });
     }
-  }, [supabase.auth]);
+  }, [supabase]);
 
   useEffect(() => {
+    if (!supabase) {
+      setState((prev) => ({ ...prev, loading: false }));
+      return;
+    }
+
     // Initial auth state
     refreshAuth();
 
@@ -62,7 +73,7 @@ export function useAuth() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase.auth, refreshAuth]);
+  }, [supabase, refreshAuth]);
 
   return {
     ...state,
