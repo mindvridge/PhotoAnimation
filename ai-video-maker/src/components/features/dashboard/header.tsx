@@ -53,7 +53,7 @@ export function Header({ onMenuClick }: HeaderProps) {
         {/* Right side items */}
         <div className="flex items-center gap-x-4 lg:gap-x-6">
           {/* New Project Button */}
-          <Link href="/projects/new">
+          <Link href="/create">
             <Button
               size="sm"
               className="hidden bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 sm:flex"

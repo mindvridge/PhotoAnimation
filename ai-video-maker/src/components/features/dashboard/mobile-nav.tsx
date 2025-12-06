@@ -24,7 +24,7 @@ const navigation = [
   },
   {
     name: '만들기',
-    href: '/projects/new',
+    href: '/create',
     icon: Plus,
     isAction: true,
   },
