@@ -237,34 +237,49 @@ export interface Database {
         Row: {
           id: string;
           user_id: string;
+          order_id: string;
+          order_name: string;
           amount: number;
           currency: string;
           payment_method: string | null;
           payment_key: string | null;
           status: PaymentStatus;
+          package_id: string | null;
           credits_added: number;
+          approved_at: string | null;
+          receipt_url: string | null;
           created_at: string;
         };
         Insert: {
           id?: string;
           user_id: string;
+          order_id: string;
+          order_name: string;
           amount: number;
           currency?: string;
           payment_method?: string | null;
           payment_key?: string | null;
           status?: PaymentStatus;
+          package_id?: string | null;
           credits_added?: number;
+          approved_at?: string | null;
+          receipt_url?: string | null;
           created_at?: string;
         };
         Update: {
           id?: string;
           user_id?: string;
+          order_id?: string;
+          order_name?: string;
           amount?: number;
           currency?: string;
           payment_method?: string | null;
           payment_key?: string | null;
           status?: PaymentStatus;
+          package_id?: string | null;
           credits_added?: number;
+          approved_at?: string | null;
+          receipt_url?: string | null;
           created_at?: string;
         };
         Relationships: [
