@@ -31,12 +31,11 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
           name,
           description,
           thumbnail_url,
-          preview_url,
+          preview_video_url,
           category,
-          credit_cost,
-          duration,
-          max_photos,
-          min_photos
+          is_premium,
+          duration_seconds,
+          max_photos
         )
       `)
       .eq('id', id)
@@ -79,7 +78,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     }
 
     const body = await request.json();
-    const { name, status, photos, videoUrl, thumbnailUrl } = body;
+    const { name, status, settings } = body;
 
     const updateData: Record<string, unknown> = {
       updated_at: new Date().toISOString(),
@@ -87,9 +86,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
 
     if (name !== undefined) updateData.name = name;
     if (status !== undefined) updateData.status = status;
-    if (photos !== undefined) updateData.photos = photos;
-    if (videoUrl !== undefined) updateData.video_url = videoUrl;
-    if (thumbnailUrl !== undefined) updateData.thumbnail_url = thumbnailUrl;
+    if (settings !== undefined) updateData.settings = settings;
 
     const { data, error } = await supabase
       .from('projects')
