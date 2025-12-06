@@ -29,6 +29,9 @@ export interface RenderJobOptions {
   message?: string;
   musicTrack?: string;
   musicVolume: number;
+  projectId?: string;
+  projectName?: string;
+  userId?: string;
 }
 
 // 인메모리 렌더링 큐 (프로덕션에서는 Redis/Bull Queue 사용 권장)
@@ -238,4 +241,33 @@ export function estimateRenderTime(
   const baseTimePerPhoto = 20; // 사진당 기본 시간 (초)
   const resolutionMultiplier = resolution === 'full-hd' ? 1.5 : 1;
   return Math.ceil(photoCount * baseTimePerPhoto * resolutionMultiplier);
+}
+
+/**
+ * 활성 작업 목록 (관리자용)
+ */
+export function getActiveJobs(): RenderJob[] {
+  return Array.from(renderQueue.values()).filter(
+    (job) => job.status !== 'completed' && job.status !== 'failed'
+  );
+}
+
+/**
+ * 작업 통계 (관리자용)
+ */
+export function getJobsStats(): {
+  pending: number;
+  processing: number;
+  completed: number;
+  failed: number;
+} {
+  const jobs = Array.from(renderQueue.values());
+  return {
+    pending: jobs.filter((j) => j.status === 'queued').length,
+    processing: jobs.filter(
+      (j) => j.status === 'preparing' || j.status === 'rendering' || j.status === 'encoding' || j.status === 'uploading'
+    ).length,
+    completed: jobs.filter((j) => j.status === 'completed').length,
+    failed: jobs.filter((j) => j.status === 'failed').length,
+  };
 }

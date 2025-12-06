@@ -13,6 +13,7 @@ export type ProjectStatus = 'draft' | 'processing' | 'completed' | 'failed';
 export type AnimationStatus = 'pending' | 'processing' | 'completed' | 'failed';
 export type RenderStatus = 'queued' | 'rendering' | 'completed' | 'failed';
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'refunded';
+export type UserRole = 'user' | 'admin';
 
 export interface Database {
   public: {
@@ -23,6 +24,7 @@ export interface Database {
           email: string;
           name: string | null;
           avatar_url: string | null;
+          role: UserRole;
           subscription_tier: SubscriptionTier;
           credits: number;
           created_at: string;
@@ -33,6 +35,7 @@ export interface Database {
           email: string;
           name?: string | null;
           avatar_url?: string | null;
+          role?: UserRole;
           subscription_tier?: SubscriptionTier;
           credits?: number;
           created_at?: string;
@@ -43,6 +46,7 @@ export interface Database {
           email?: string;
           name?: string | null;
           avatar_url?: string | null;
+          role?: UserRole;
           subscription_tier?: SubscriptionTier;
           credits?: number;
           created_at?: string;
@@ -305,6 +309,7 @@ export interface Database {
       animation_status: AnimationStatus;
       render_status: RenderStatus;
       payment_status: PaymentStatus;
+      user_role: UserRole;
     };
     CompositeTypes: {
       [_ in never]: never;
