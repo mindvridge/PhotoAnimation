@@ -1,0 +1,18 @@
+# Template Assets
+# 이 폴더에 템플릿 썸네일과 미리보기 영상을 저장합니다.
+#
+# 필요한 파일:
+# - romantic-wedding-thumb.jpg (결혼식 템플릿 썸네일)
+# - romantic-wedding-preview.mp4 (결혼식 템플릿 미리보기)
+# - first-birthday-thumb.jpg (돌잔치 템플릿 썸네일)
+# - first-birthday-preview.mp4 (돌잔치 템플릿 미리보기)
+# - seventieth-celebration-thumb.jpg (칠순 템플릿 썸네일)
+# - seventieth-celebration-preview.mp4 (칠순 템플릿 미리보기)
+# - happy-birthday-thumb.jpg (생일 템플릿 썸네일)
+# - happy-birthday-preview.mp4 (생일 템플릿 미리보기)
+# - eternal-memory-thumb.jpg (추모 템플릿 썸네일)
+# - eternal-memory-preview.mp4 (추모 템플릿 미리보기)
+#
+# 권장 사양:
+# - 썸네일: 800x450px (16:9), JPG/WebP
+# - 미리보기: 1280x720 (720p), MP4 (H.264)

@@ -1,0 +1,21 @@
+# Sample Photos for Testing
+# 이 폴더에 테스트용 샘플 사진을 저장합니다.
+#
+# 권장 파일:
+# - sample-portrait-1.jpg ~ sample-portrait-5.jpg (인물 사진)
+# - sample-couple-1.jpg ~ sample-couple-3.jpg (커플 사진)
+# - sample-family-1.jpg ~ sample-family-3.jpg (가족 사진)
+# - sample-baby-1.jpg ~ sample-baby-3.jpg (아기 사진)
+#
+# 권장 사양:
+# - 해상도: 1920x1080 이상
+# - 형식: JPG/PNG
+# - 인물이 명확하게 보이는 사진
+#
+# 무료 이미지 출처:
+# - Unsplash (unsplash.com)
+# - Pexels (pexels.com)
+# - Pixabay (pixabay.com)
+#
+# 주의: 실제 인물 사진은 초상권을 확인하세요.
+# 테스트용으로는 AI 생성 이미지 또는 스톡 이미지를 사용하세요.
