@@ -243,3 +243,19 @@ export function validateRequired<T extends Record<string, unknown>>(
     );
   }
 }
+
+/**
+ * 인증 에러 (UnauthorizedError의 별칭)
+ */
+export class AuthenticationError extends ApiError {
+  constructor(message: string = '인증이 필요합니다.') {
+    super(message, 401, ErrorCodes.UNAUTHORIZED);
+    this.name = 'AuthenticationError';
+    Object.setPrototypeOf(this, AuthenticationError.prototype);
+  }
+}
+
+/**
+ * 에러 핸들링 함수 (createErrorResponse의 별칭)
+ */
+export const handleError = createErrorResponse;
